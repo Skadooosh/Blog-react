@@ -1,0 +1,20 @@
+{
+    "vscode": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-blog-react-vscode-220436-authRole",
+            "UnauthRoleArn": "arn:aws:iam::553810674567:role/amplify-blog-react-vscode-220436-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::553810674567:role/amplify-blog-react-vscode-220436-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-blog-react-vscode-220436-deployment",
+            "UnauthRoleName": "amplify-blog-react-vscode-220436-unauthRole",
+            "StackName": "amplify-blog-react-vscode-220436",
+            "StackId": "arn:aws:cloudformation:us-east-2:553810674567:stack/amplify-blog-react-vscode-220436/416161b0-3dfe-11ea-a7ef-06c94a3c6390",
+            "AmplifyAppId": "d25gjn6ts5og2w"
+        },
+        "categories": {
+            "auth": {
+                "blogreact863555ee": {}
+            }
+        }
+    }
+}
