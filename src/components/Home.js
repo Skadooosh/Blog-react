@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {Card, Button, Container, Row} from 'react-bootstrap';
-
+import {isAuthenticated} from './../authentication/helper/auth'
 
 class Home extends Component {
     state = {
@@ -22,10 +22,17 @@ class Home extends Component {
                 name: 'Programming Languages',
                 value: '1'
             }
-        ]
-    };
+        ],
+        isValidUser : false
+    }
+
     componentDidMount() {
-        let data;
+        let data;      
+        let isValidUser = isAuthenticated();
+        this.setState({
+          isValidUser
+        })
+        console.log(isValidUser)
         if(typeof(this.props.location.state)!=="undefined")
             data = this.props.location.state.response;
 
@@ -47,7 +54,9 @@ class Home extends Component {
         }
 
     }
-    componentDidUpdate(prevProps, prevState) {}
+    componentDidUpdate(prevProps, prevState) {
+
+    }
 
     render() {
         return (

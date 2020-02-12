@@ -14,7 +14,6 @@ class App extends Component {
   }
   componentDidMount() {
     let isValidUser = isAuthenticated();
-    console.log(isValidUser)
     this.setState({
       isValidUser
     })
@@ -24,12 +23,10 @@ class App extends Component {
       <Router>
         <Header />
         <Switch> 
-          <Route exact path = "/" component = {Home} />
+          <Route exact path = "/" component = {Home} />  
           <Route path = "/view" component = {ViewArticleComponent} />
-
           {!this.state.isValidUser && <Route path = "/auth" component = {SignUp} />}
           {!this.state.isValidUser && <Route path = "/signin" component = {SignInForm} />}
-
           {this.state.isValidUser && <Route path = "/create" component = {CreateArticleComponent} />}
           {this.state.isValidUser && <Route path = "/profile" component = {CreateArticleComponent} />}
         </Switch>

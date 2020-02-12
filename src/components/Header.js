@@ -10,7 +10,6 @@ class Header extends Component {
 
     componentDidMount() {
         let isValidUser = isAuthenticated();
-        console.log(isValidUser)
         this.setState({
           isValidUser
         })
