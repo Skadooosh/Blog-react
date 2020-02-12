@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {CognitoUserPool, CognitoUser, AuthenticationDetails} from 'amazon-cognito-identity-js';
+import {AppContext} from './../../AppContext'
+
 
 const POOL_DATA = {
     UserPoolId: 'ap-south-1_3fz4uuFk9',
@@ -9,6 +11,7 @@ const POOL_DATA = {
 const userPool = new CognitoUserPool(POOL_DATA);
 
 class SignInForm extends Component {
+    static contextType = AppContext;
     constructor(props) {
         super(props);
         this.state = {
@@ -17,7 +20,6 @@ class SignInForm extends Component {
             signedIn: false
         };
     }
-
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -35,10 +37,11 @@ class SignInForm extends Component {
         const cognitoUser = new CognitoUser(userData);
         cognitoUser.authenticateUser(authDetails, {
             onSuccess(result) {
-                
+                that.context.setValidity();
                 that.props.history.push({
                     pathname : "/",
                 });
+
             },
             onFailure(err) {
 

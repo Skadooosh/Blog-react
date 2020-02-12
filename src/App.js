@@ -6,31 +6,25 @@ import CreateArticleComponent from './components/CreateArticleComponent';
 import ViewArticleComponent from './components/ViewArticleComponent';
 import SignUp from './authentication/components/SignUp';
 import SignInForm from './authentication/components/SignIn';
-import {isAuthenticated} from './authentication/helper/auth'
+import {MyProvider} from './AppContext'
 
 class App extends Component {
-  state = {
-    isValidUser : false
-  }
-  componentDidMount() {
-    let isValidUser = isAuthenticated();
-    this.setState({
-      isValidUser
-    })
-  }
+
   render() {  
     return (
-      <Router>
-        <Header />
-        <Switch> 
-          <Route exact path = "/" component = {Home} />  
-          <Route path = "/view" component = {ViewArticleComponent} />
-          {!this.state.isValidUser && <Route path = "/auth" component = {SignUp} />}
-          {!this.state.isValidUser && <Route path = "/signin" component = {SignInForm} />}
-          {this.state.isValidUser && <Route path = "/create" component = {CreateArticleComponent} />}
-          {this.state.isValidUser && <Route path = "/profile" component = {CreateArticleComponent} />}
-        </Switch>
-      </Router>
+      <MyProvider>
+        <Router>
+              <Header />
+              <Switch> 
+                <Route exact path = "/" component = {Home} />  
+                <Route path = "/view" component = {ViewArticleComponent} />
+                <Route path = "/auth" component = {SignUp} />
+                <Route path = "/signin" component = {SignInForm} />
+                <Route path = "/create" component = {CreateArticleComponent} />
+                <Route path = "/profile" component = {CreateArticleComponent} />
+              </Switch>
+            </Router>
+      </MyProvider>
     );
   }
 }
