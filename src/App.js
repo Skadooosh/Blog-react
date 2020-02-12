@@ -5,23 +5,33 @@ import Header from "./components/Header";
 import CreateArticleComponent from './components/CreateArticleComponent';
 import ViewArticleComponent from './components/ViewArticleComponent';
 import SignUp from './authentication/components/SignUp';
-import Amplify from 'aws-amplify';
-import aws_exports from './aws-exports';
 import SignInForm from './authentication/components/SignIn';
-Amplify.configure(aws_exports);
-
+import {isAuthenticated} from './authentication/helper/auth'
 
 class App extends Component {
+  state = {
+    isValidUser : false
+  }
+  componentDidMount() {
+    let isValidUser = isAuthenticated();
+    console.log(isValidUser)
+    this.setState({
+      isValidUser
+    })
+  }
   render() {  
     return (
       <Router>
         <Header />
         <Switch> 
           <Route exact path = "/" component = {Home} />
-          <Route path = "/create" component = {CreateArticleComponent} />
           <Route path = "/view" component = {ViewArticleComponent} />
-          <Route path = "/auth" component = {SignUp} />
-          <Route path = "/signin" component = {SignInForm} />
+
+          {!this.state.isValidUser && <Route path = "/auth" component = {SignUp} />}
+          {!this.state.isValidUser && <Route path = "/signin" component = {SignInForm} />}
+
+          {this.state.isValidUser && <Route path = "/create" component = {CreateArticleComponent} />}
+          {this.state.isValidUser && <Route path = "/profile" component = {CreateArticleComponent} />}
         </Switch>
       </Router>
     );

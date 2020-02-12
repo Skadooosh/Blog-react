@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Form, Col, Button, Container} from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
+import {getAuthenticatedUser} from './../authentication/helper/auth';
 
 class CreateArticleComponent extends Component {
     state = {
@@ -40,10 +41,36 @@ class CreateArticleComponent extends Component {
 
     onCreateArticleHandler = (e) => {
         e.preventDefault();
-        this.props.history.push({
-            pathname : "/",
-            state : {response : this.state}
-        });
+        getAuthenticatedUser().getSession(async(err,session) => {
+            if(err) {
+                return;
+            }
+            try {
+                let data = {
+                    email : this.state.email,
+                    title : this.state.title,
+                    shortDescription : this.state.shortDescription,
+                    content : this.state.content
+                };
+                const response = await fetch(`https://r7l0un3112.execute-api.ap-south-1.amazonaws.com/dev/br-article`, {
+                    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'Authorization': session.getIdToken().getJwtToken()
+                    },
+                    body: JSON.stringify(data) // body data type must match "Content-Type" header
+                  });
+                const json = await response.json();
+                
+            } catch(err) {
+                console.log(err);
+            }
+    
+            this.props.history.push({
+                pathname : "/"
+            });
+        })
+
     }
     render() {
 
