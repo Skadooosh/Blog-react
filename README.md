@@ -5,7 +5,11 @@
 
 ## About
 
+<<<<<<< HEAD
 This is a simple Blogging application Build using **React JS** where user can login and create blogs and view blogs from other user. User can also sort or select specific kind of blogs. 
+=======
+This is a simple Blogging application developed using **React JS** where user can login and create blogs and view blogs from other user. User can also sort or select specific kind of blogs. 
+>>>>>>> 2d507816765f89b7bac874b431ffce96ac76dda8
 
 Authentication is handled via Amazon Cognito and I have used AWS API Gateway and Lambda function to store data in dynamoDB.
 
@@ -26,4 +30,8 @@ and build using
 
 - [ ] Have to add feature to show separate profile page to user to change password, update profile information, edit posts
 - [ ] Display posts based on user
+<<<<<<< HEAD
 - [ ] Update UI
+=======
+- [ ] Update UI
+>>>>>>> 2d507816765f89b7bac874b431ffce96ac76dda8
