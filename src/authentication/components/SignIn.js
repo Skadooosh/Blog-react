@@ -76,7 +76,7 @@ class SignInForm extends Component {
             );
         } else {
             return (
-                <div className = "mt-4" style = {
+                <div style = {
                     {
                         width: "340px",
                         margin:" 50px auto"
@@ -86,7 +86,6 @@ class SignInForm extends Component {
                       style = {{
                         width: "100%",
                         maxWidth: "420px",
-                        padding: "12px",
                         margin: "0 auto",
                         marginBottom: "15px",
                         background: "#f7f7f7",

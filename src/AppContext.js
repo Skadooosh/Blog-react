@@ -23,9 +23,8 @@ export class MyProvider extends Component {
         })},
         signOut : () => {
             logout();
-            let isValidUser = isAuthenticated();
             this.setState({
-              isValidUser
+              isValidUser : false
             })
         }
       }}>

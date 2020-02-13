@@ -2,93 +2,58 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {Card, Button, Container, Row} from 'react-bootstrap';
 import {AppContext} from './../AppContext'
+import {getAuthenticatedUser} from './../authentication/helper/auth'
+
 
 class Home extends Component {
     static contextType = AppContext;
 
     state = {
         articles: [
-            {
-                id: 1,
-                title: 'Javascript Fundamentals',
-                shortDescription: 'This article is based on ES5 and ES6 concepts of Javascript...',
-                imgUrl: '',
-                type: 'Technology',
-                theme: 'black',
-                content: ''
-            }
         ],
         articleType: [
-            {   
-                id : '01',
-                name: 'Programming Languages',
-                value: '1'
-            },
-            {   
-                id : '02',
-                name: 'FrontEnd Framework',
-                value: '1'
-            },
-            {   
-                id : '03',
-                name: 'Backend',
-                value: '1'
-            },
-            {   
-                id : '04',
-                name: 'Fitness',
-                value: '1'
-            },
-            {   
-                id : '05',
-                name: 'Machine Learning',
-                value: '0'
-            },
-            {   
-                id : '06',
-                name: 'Artificial Intelligence',
-                value: '0'
-            }
+            // {   
+            //     id : '01',
+            //     name: 'Programming Languages',
+            //     value: '1'
+            // }
         ]
     }
 
     async componentDidMount() {
-        try {
             let {articles} = this.state;
-            const response = await fetch(`https://r7l0un3112.execute-api.ap-south-1.amazonaws.com/dev/all`, {
-                method: 'GET', // *GET, POST, PUT, DELETE, etc.           
-            });
-            const json = await response.json();
-            console.log(json);
-            json.forEach(e => {
-                articles.push({
-                    id: e.UserId,
-                    title: e.Article.title,
-                    shortDescription: e.Article.shortDescription,
-                    imgUrl: '',
-                    type: '',
-                    theme: '',
-                    content: e.Article.content
+            try {
+                const response = await fetch(`https://r7l0un3112.execute-api.ap-south-1.amazonaws.com/dev/`, {
+                    method: 'GET', // *GET, POST, PUT, DELETE, etc. ,
+                    });
+                const json = await response.json();
+            
+                json.forEach(e => {
+                    articles.push({
+                        id: e.UserId,
+                        title: e.Article.title,
+                        shortDescription: e.Article.shortDescription,
+                        imgUrl: '',
+                        type: '',
+                        theme: '',
+                        content: e.Article.content
+                    })
                 })
-            })
-            this.setState({
-                articles
-            })
-        }
-        catch(err) {
-            console.log(err);
+                this.setState({
+                    articles
+                })
+            }
+            catch(err) {
+                console.log(err);
+            }
         }
 
-    }
-    componentDidUpdate(prevProps, prevState) {
-
-    }
 
     render() {
         return (
             <Container>
                 <Row style={{
-                    marginBottom: '10px'
+                    marginTop: '5rem'
                 }}>
                     {this
                         .state
@@ -105,19 +70,23 @@ class Home extends Component {
                             </button>
                         ))}
                 </Row>
-                {this.context.isValidUser &&
                 <Row className = "mt-5">
                     <button style = {{margin: '4px'}} type="button" className="btn btn-info mx-auto">
                     Getting Started                
                     </button>
                 </Row>
-                }
+                {!this.context.isValidUser ?
+                <div>
                 <Row className = "mb-5">
                 <span className = "mx-auto">Already have an account? <Link to = "/signin">Sign in.</Link></span>
                 </Row>
+                </div>
+                :
                 <Row>
-                   <h3 className = "mx-auto">View all Articles</h3>
+                    <h3 className = "mx-auto mt-5 mb-3">View all Articles</h3>
                 </Row>
+                }
+
                 <Row>
                     {this
                         .state

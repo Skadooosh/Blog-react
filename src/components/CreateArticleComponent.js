@@ -61,9 +61,8 @@ class CreateArticleComponent extends Component {
                     },
                     body: JSON.stringify(data) // body data type must match "Content-Type" header
                   });
-                  console.log(JSON.stringify(data))
                 const json = await response.json();
-                
+                console.log(json);
             } catch(err) {
                 console.log(err);
             }
@@ -83,8 +82,8 @@ class CreateArticleComponent extends Component {
             }
         }
         return (
-            <Container>
-                <Form>
+            <Container >
+                <Form style = {{marginTop : "50px"}}>
                     <Form.Row>
                         <Form.Group as={Col} controlId="email">
                             <Form.Label>Email</Form.Label>

@@ -8,7 +8,7 @@ class Header extends Component {
         return(
             <AppContext.Consumer>
                 {context => 
-                <Navbar>
+                <Navbar expand="lg" variant="light" bg="light">
                     <Container>
                         <Navbar.Brand href="/">Blog Template{console.log("Header has valid user : " + context.isValidUser)}
                         </Navbar.Brand>

@@ -10,6 +10,7 @@ import CreateArticleComponent from './components/CreateArticleComponent';
 import ViewArticleComponent from './components/ViewArticleComponent';
 import SignUp from './authentication/components/SignUp';
 import SignInForm from './authentication/components/SignIn';
+import Profile from './components/Profile';
 
 class App extends Component {
 
@@ -26,7 +27,7 @@ class App extends Component {
                 <Route path = "/auth" component = {SignUp} />
                 <Route path = "/signin" component = {SignInForm} />
                 <Route path = "/create" component = {CreateArticleComponent} />
-                <Route path = "/profile" component = {CreateArticleComponent} />
+                <Route path = "/profile" component = {Profile} />
               </Switch>
           </div>
             </Router>

@@ -124,16 +124,16 @@ class SignUp extends Component {
         if (verified) {
 
             return (
-                <div className = "mt-4" style = {
+                <div style = {
                     {
                         width: "340px",
-                        margin:" 50px auto"
+                        margin:"50px auto"
                     }
-                }>                    <form 
+                }>                    
+                <form 
                           style = {{
                             width: "100%",
                             maxWidth: "420px",
-                            padding: "12px",
                             margin: "0 auto",
                             marginBottom: "15px",
                             background: "#f7f7f7",
@@ -158,7 +158,7 @@ class SignUp extends Component {
             );
         } else {
             return (
-                <div className = "mt-4" style = {
+                <div style = {
                     {
                         width: "340px",
                         margin:" 50px auto"
@@ -167,7 +167,6 @@ class SignUp extends Component {
                           style = {{
                             width: "100%",
                             maxWidth: "420px",
-                            padding: "12px",
                             margin: "0 auto",
                             marginBottom: "15px",
                             background: "#f7f7f7",
