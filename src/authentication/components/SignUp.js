@@ -99,39 +99,74 @@ class SignUp extends Component {
                     }
                 })
         }
-        e.target.reset();
+
     }
 
     render() {
         const {verified} = this.state;
+        let isDisabled = false;
+        if(this.state.username === "")
+            isDisabled = true
+        if(this.state.password === "")
+            isDisabled = true
+        if(this.state.email === "")
+            isDisabled = true
+
+
+        let isConfirmDisabled = false;
+        if(this.state.username === "")
+            isConfirmDisabled = true
+        if(this.state.confirmationCode === "")
+            isConfirmDisabled = true
+
+
+
         if (verified) {
 
             return (
-                <div>
-                    <form onSubmit={this.onSubmitHandler}>
-                        <label>Username</label>
-                        <input id='username' type='text' onChange={this.handleChange}/><br/>
-                        <label>Email</label>
-                        <input id='email' type='text' onChange={this.handleChange}/><br/>
-                        <label>Password</label>
-                        <input id='password' type='password' onChange={this.handleChange}/>
-                        <br/>
-                        <button>Sign up</button>
+                <div className = "mt-4">
+                    <form 
+                          style = {{
+                            width: "100%",
+                            maxWidth: "420px",
+                            padding: "12px",
+                            margin: "0 auto"
+                          }}>
+                        <div className = "form-label-group">
+                        <input id='username' value = {this.state.username} className = "form-control mb-1" placeholder = "Username" type='text' onChange={this.handleChange}/>
+                        </div>
+                        <div className = "form-label-group">
+                        <input id='email' value = {this.state.email} className = "form-control mb-1" placeholder = "Email" type='text' onChange={this.handleChange}/>
+                        </div>
+                        <div className = "form-label-group">
+                        <input id='password' value = {this.state.password} className = "form-control mb-3" placeholder = "Password" type='password' onChange={this.handleChange}/>
+                        </div>
+                        <button disabled = {isDisabled} onClick ={this.onSubmitHandler} className = "btn btn-md btn-primary btn-block" >Sign up</button>
+                        <button onClick = {e => { e.preventDefault(); this.setState({verified: false})}} className = "btn btn-md btn-secondary btn-block" >Confirm User</button>
+
                     </form>
-                        <button onClick = {e => this.setState({verified: false})}>Confirm User</button>
                 </div>
             );
         } else {
             return (
-                <div>
-                    <form onSubmit={this.onSubmitHandler}>
-                        <label>Username</label>
-                        <input id='username' type='text' onChange={this.handleChange}/>
-                        <label>Verification Code</label>
-                        <input id='confirmationCode' type='text' onChange={this.handleChange}/>
-                        <button>Create Account</button>
+                <div className = "mt-4">
+                    <form 
+                          style = {{
+                            width: "100%",
+                            maxWidth: "420px",
+                            padding: "12px",
+                            margin: "0 auto"
+                          }}>
+                        <div className = "form-label-group">
+                        <input id='username' value = {this.state.username} className = "form-control mb-1" placeholder = "Username" type='text' onChange={this.handleChange}/>
+                        </div>
+                        <div className = "form-label-group">
+                        <input id='confirmationCode' value = {this.state.confirmationCode} className = "form-control mb-1" placeholder = "Verification Code" type='text' onChange={this.handleChange}/>
+                        </div>
+                        <button disabled = {isConfirmDisabled} onClick ={this.onSubmitHandler} className = "btn btn-md btn-primary btn-block" >Create Account</button>
+                        <button onClick = {e => { e.preventDefault(); this.setState({verified: true})}} className = "btn btn-md btn-secondary btn-block" >Sign Up</button>
+
                     </form>
-                        <button onClick = {e => this.setState({verified: true})}>Sign up</button>
                 </div>
             )
         }

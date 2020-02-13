@@ -59,23 +59,40 @@ class SignInForm extends Component {
 
     render() {
         const {signedIn} = this.state;
+        let isDisabled = false;
+        if(this.state.username === "")
+            isDisabled = true
+        if(this.state.password === "")
+            isDisabled = true
+
+
+
+
         if (signedIn) {
             return (
-                <div>
-                    <h1>You have signed in!</h1>
+                <div className= "text-center mt-4">
+                    <h1>You have Successfully Signed in!</h1>
                 </div>
             );
         } else {
             return (
-                <div>
-                    <form onSubmit={this.handleSubmit}>
-                        <label>Username</label>
-                        <input id='username' type='text' onChange={this.handleChange}/>
-                        <label>Password</label>
-                        <input id='password' type='password' onChange={this.handleChange}/>
-                        <button>Sign In</button>
-                    </form>
-                </div>
+                <div className = "mt-4">
+                <form 
+                      style = {{
+                        width: "100%",
+                        maxWidth: "420px",
+                        padding: "12px",
+                        margin: "0 auto"
+                      }}>
+                    <div className = "form-label-group">
+                    <input id='username' value = {this.state.username} className = "form-control mb-1" placeholder = "Username" type='text' onChange={this.handleChange}/>
+                    </div>
+                    <div className = "form-label-group">
+                    <input id='password' value = {this.state.password} className = "form-control mb-3" placeholder = "Password" type='password' onChange={this.handleChange}/>
+                    </div>
+                    <button disabled = {isDisabled} onClick ={this.handleSubmit} className = "btn btn-md btn-primary btn-block">Sign in</button>
+                </form>
+            </div>
             );
         }
     }

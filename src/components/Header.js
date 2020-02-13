@@ -8,16 +8,16 @@ class Header extends Component {
         return(
             <AppContext.Consumer>
                 {context => 
-                <Navbar style = {{marginBottom : '0.7rem', height: '7.5rem'}} bg='dark' variant='dark'>
+                <Navbar>
                     <Container>
                         <Navbar.Brand href="/">Blog Template{console.log("Header has valid user : " + context.isValidUser)}
                         </Navbar.Brand>
                         <Nav className="ml-auto">
-                            <Nav.Link href="/">View</Nav.Link>
+                            <Nav.Link href="/home">View</Nav.Link>
                             {!context.isValidUser ? 
                             <React.Fragment>
-                                <Nav.Link href="/auth">Sign Up</Nav.Link>
-                                <Nav.Link href="/signin">Sign In</Nav.Link>
+                                <Nav.Link href="/auth">Sign up</Nav.Link>
+                                <Nav.Link href="/signin">Sign in</Nav.Link>
                             </React.Fragment> 
                             :
                             <React.Fragment>

@@ -11,7 +11,8 @@ const ViewArticleComponent = (props) => {
                 {props.location.state.data.shortDescription}
                 </p>
                 <p>
-                    <Button variant="primary">Learn more</Button>
+                    {props.location.state.data.content}
+                    <br/><br/><Button variant="primary">Learn more</Button>
                 </p>
             </Jumbotron>
         </Container>

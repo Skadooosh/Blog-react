@@ -52,6 +52,7 @@ class CreateArticleComponent extends Component {
                     shortDescription : this.state.shortDescription,
                     content : this.state.content
                 };
+                console.log(data.content    );
                 const response = await fetch(`https://r7l0un3112.execute-api.ap-south-1.amazonaws.com/dev/br-article`, {
                     method: 'POST', // *GET, POST, PUT, DELETE, etc.
                     headers: {
@@ -60,6 +61,7 @@ class CreateArticleComponent extends Component {
                     },
                     body: JSON.stringify(data) // body data type must match "Content-Type" header
                   });
+                  console.log(JSON.stringify(data))
                 const json = await response.json();
                 
             } catch(err) {

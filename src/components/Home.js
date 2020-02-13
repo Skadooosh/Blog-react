@@ -20,30 +20,60 @@ class Home extends Component {
                 id : '01',
                 name: 'Programming Languages',
                 value: '1'
+            },
+            {   
+                id : '02',
+                name: 'FrontEnd Framework',
+                value: '1'
+            },
+            {   
+                id : '03',
+                name: 'Backend',
+                value: '1'
+            },
+            {   
+                id : '04',
+                name: 'Fitness',
+                value: '1'
+            },
+            {   
+                id : '05',
+                name: 'Machine Learning',
+                value: '0'
+            },
+            {   
+                id : '06',
+                name: 'Artificial Intelligence',
+                value: '0'
             }
         ]
     }
 
-    componentDidMount() {
-        let data;      
-        if(typeof(this.props.location.state)!=="undefined")
-            data = this.props.location.state.response;
-
-        if(typeof(data) !== "undefined") {
-
-            let _articles = this.state.articles;
-            _articles.push({
-                id: 2,
-                title: data.title,
-                shortDescription: data.shortDescription,
-                imgUrl: '',
-                type: 'Technology',
-                theme: 'black',
-                content: data.content
+    async componentDidMount() {
+        try {
+            let {articles} = this.state;
+            const response = await fetch(`https://r7l0un3112.execute-api.ap-south-1.amazonaws.com/dev/all`, {
+                method: 'GET', // *GET, POST, PUT, DELETE, etc.           
+            });
+            const json = await response.json();
+            console.log(json);
+            json.forEach(e => {
+                articles.push({
+                    id: e.UserId,
+                    title: e.Article.title,
+                    shortDescription: e.Article.shortDescription,
+                    imgUrl: '',
+                    type: '',
+                    theme: '',
+                    content: e.Article.content
+                })
             })
             this.setState({
-                articles : _articles
+                articles
             })
+        }
+        catch(err) {
+            console.log(err);
         }
 
     }
@@ -61,7 +91,7 @@ class Home extends Component {
                         .state
                         .articleType
                         .map(type => (
-                            <button key = {type.id} type="button" className="btn btn-primary">
+                            <button style = {{margin: '4px'}} key = {type.id} type="button" className="btn btn-primary">
                                 {type.name}
                                 <span
                                     style={{
@@ -72,6 +102,17 @@ class Home extends Component {
                             </button>
                         ))}
                 </Row>
+                <Row className = "mt-5">
+                    <button style = {{margin: '4px'}} type="button" className="btn btn-info mx-auto">
+                    Getting Started                
+                    </button>
+                </Row>
+                <Row className = "mb-5">
+                <span className = "mx-auto">Already have an account? <Link to = "/signin">Sign in.</Link></span>
+                </Row>
+                <Row>
+                   <h3 className = "mx-auto">View all Articles</h3>
+                </Row>
                 <Row>
                     {this
                         .state
@@ -80,9 +121,9 @@ class Home extends Component {
                             <Card
                                 key={article.id}
                                 style={{
-                                width: '18rem'
+                                width: '18rem',
+                                margin: '4px 4px'
                             }}>
-                                {/* <Card.Img variant="top" src="holder.js/100px180"/> */}
                                 <Card.Body>
                                     <Card.Title>{article.title}</Card.Title>
                                     <Card.Text>
@@ -98,6 +139,7 @@ class Home extends Component {
                             </Card>
                         ))}
                 </Row>
+
             </Container>
         )
     }
