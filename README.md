@@ -5,7 +5,7 @@ This is a simple Blogging applciation Build using React JS where user can login 
 Authentication is handled via Amazon Cognito and I have used AWS API Gateway and Lambda function to store data in dynamoDB.
 
 #Prerequisites
-For getting started with this project you need to have knowledge of Amazon services (api gateway, dynamoDB, lambda function, IAM etc) so you can connect your application with a database and authenticate user.
+For getting started with this project you need to have knowledge of **Amazon services** (api gateway, dynamoDB, lambda function, IAM etc) so you can connect your application with a database and authenticate user.
 
 Other packages you can install via `npm install` command in your terminal of project.
 
