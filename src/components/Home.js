@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {Card, Button, Container, Row} from 'react-bootstrap';
+import {AppContext} from './../AppContext'
 
 class Home extends Component {
+    static contextType = AppContext;
+
     state = {
         articles: [
             {
@@ -102,11 +105,13 @@ class Home extends Component {
                             </button>
                         ))}
                 </Row>
+                {this.context.isValidUser &&
                 <Row className = "mt-5">
                     <button style = {{margin: '4px'}} type="button" className="btn btn-info mx-auto">
                     Getting Started                
                     </button>
                 </Row>
+                }
                 <Row className = "mb-5">
                 <span className = "mx-auto">Already have an account? <Link to = "/signin">Sign in.</Link></span>
                 </Row>

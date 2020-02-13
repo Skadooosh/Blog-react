@@ -124,14 +124,23 @@ class SignUp extends Component {
         if (verified) {
 
             return (
-                <div className = "mt-4">
-                    <form 
+                <div className = "mt-4" style = {
+                    {
+                        width: "340px",
+                        margin:" 50px auto"
+                    }
+                }>                    <form 
                           style = {{
                             width: "100%",
                             maxWidth: "420px",
                             padding: "12px",
-                            margin: "0 auto"
+                            margin: "0 auto",
+                            marginBottom: "15px",
+                            background: "#f7f7f7",
+                            boxShadow: "0px 2px 2px rgba(0, 0, 0, 0.3)",
+                            padding: "30px"
                           }}>
+                        <h2 style = {{margin: "0 0 15px"}}>Sign Up</h2>
                         <div className = "form-label-group">
                         <input id='username' value = {this.state.username} className = "form-control mb-1" placeholder = "Username" type='text' onChange={this.handleChange}/>
                         </div>
@@ -149,14 +158,23 @@ class SignUp extends Component {
             );
         } else {
             return (
-                <div className = "mt-4">
-                    <form 
+                <div className = "mt-4" style = {
+                    {
+                        width: "340px",
+                        margin:" 50px auto"
+                    }
+                }>                    <form 
                           style = {{
                             width: "100%",
                             maxWidth: "420px",
                             padding: "12px",
-                            margin: "0 auto"
+                            margin: "0 auto",
+                            marginBottom: "15px",
+                            background: "#f7f7f7",
+                            boxShadow: "0px 2px 2px rgba(0, 0, 0, 0.3)",
+                            padding: "30px"
                           }}>
+                                                  <h2 style = {{margin: "0 0 15px"}}>Confirm User</h2>
                         <div className = "form-label-group">
                         <input id='username' value = {this.state.username} className = "form-control mb-1" placeholder = "Username" type='text' onChange={this.handleChange}/>
                         </div>
