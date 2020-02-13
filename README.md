@@ -1,6 +1,7 @@
 #React Blog Application
 
-[show live demo](https://master.dhkp5qrioyba9.amplifyapp.com/)
+[show live demo](https://master.dhkp5qrioyba9.amplifyapp.com/)\n\n
+
 This is a simple Blogging application Build using **React JS** where user can login and create blogs and view all kind of blogs from other user. User can also sort or select specific kind of blogs. 
 
 Authentication is handled via Amazon Cognito and I have used AWS API Gateway and Lambda function to store data in dynamoDB.
