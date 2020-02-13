@@ -1,6 +1,6 @@
 #React Blog Application
 
-[show live demo](https://master.dhkp5qrioyba9.amplifyapp.com/)
+[Show live demo](https://master.dhkp5qrioyba9.amplifyapp.com/)
 
 
 This is a simple Blogging application Build using **React JS** where user can login and create blogs and view all kind of blogs from other user. User can also sort or select specific kind of blogs. 
@@ -22,6 +22,6 @@ and build using
 
 #To DO
 
-- [ ]Have to add feature to show separate profile page to user to change password, update profile information, edit posts
-- [ ]Display posts based on user
-- [ ]Update UI
+- [ ] Have to add feature to show separate profile page to user to change password, update profile information, edit posts
+- [ ] Display posts based on user
+- [ ] Update UI
