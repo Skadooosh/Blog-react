@@ -7,7 +7,7 @@ const ViewArticleComponent = (props) => {
 
     return (
         <Container>
-            <Jumbotron style = {{marginTop : "5rem"}}>
+            <Jumbotron style = {{marginTop : "100px"}}>
                 <h1>{props.location.state.data.title}</h1>
                 <p>
                 {props.location.state.data.shortDescription}
