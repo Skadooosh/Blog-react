@@ -3,8 +3,8 @@ import swal from 'sweetalert';
 import {CognitoUserPool, CognitoUserAttribute, CognitoUser} from 'amazon-cognito-identity-js';
 
 const POOL_DATA = {
-    UserPoolId: 'ap-south-1_3fz4uuFk9',
-    ClientId: '36ubrnr70p57f5l43g600h1uk1'
+    UserPoolId: '',
+    ClientId: ''
 }
 
 const userPool = new CognitoUserPool(POOL_DATA);
